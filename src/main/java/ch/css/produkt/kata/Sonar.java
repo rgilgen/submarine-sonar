@@ -26,7 +26,6 @@ public class Sonar {
         String path = "src/main/resources/kata-input.txt";
         File file = new File(path);
         InputStream is = Files.newInputStream(file.toPath());
-
         Reader reader = new InputStreamReader(is);
         BufferedReader r = new BufferedReader(reader);
         return r.lines().map(Integer::parseInt).collect(Collectors.toList());

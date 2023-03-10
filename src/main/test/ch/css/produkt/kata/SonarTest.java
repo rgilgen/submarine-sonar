@@ -57,4 +57,15 @@ class SonarTest {
 
         assertEquals(size,l.size());
     }
+
+    @Test
+    void getAnswerOfQuiz() throws IOException{
+        int expectedIncreases= 1527;
+
+        List<Integer> sonarlist = testee.getFile();
+        int actualincreases = testee.getIncreases(sonarlist);
+
+        assertEquals(expectedIncreases, actualincreases);
+
+    }
 }
