@@ -9,11 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SonarTest {
 
+    Sonar testee = new Sonar();
+
     @Test
     void getOneIncreaseTest() {
         int expectedIncreases = 1;
         List<Integer> deptData = Arrays.asList(99, 100);
-        int increases = Sonar.getIncreases(deptData);
+        int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
     }
@@ -22,7 +24,7 @@ class SonarTest {
     void getNoIncreaseTest() {
         int expectedIncreases = 0;
         List<Integer> deptData = Arrays.asList(100, 99);
-        int increases = Sonar.getIncreases(deptData);
+        int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
     }
@@ -31,7 +33,7 @@ class SonarTest {
     void getTwoIncreaseTest(){
         int expectedIncreases = 2;
         List<Integer> deptData = Arrays.asList(99,100,101);
-        int increases = Sonar.getIncreases(deptData);
+        int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
     }
@@ -40,7 +42,7 @@ class SonarTest {
     void getDiverseInputs(){
         int expectedIncreases = 1;
         List<Integer> deptData = Arrays.asList(101,100,99,200);
-        int increases = Sonar.getIncreases(deptData);
+        int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
     }

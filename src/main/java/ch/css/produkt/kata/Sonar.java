@@ -3,7 +3,7 @@ package ch.css.produkt.kata;
 import java.util.List;
 
 public class Sonar {
-    public static int getIncreases(List<Integer> deptData) {
+    public int getIncreases(List<Integer> deptData) {
 
         int increases = 0;
 
