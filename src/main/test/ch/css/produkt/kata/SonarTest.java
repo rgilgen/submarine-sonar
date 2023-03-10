@@ -46,4 +46,13 @@ class SonarTest {
 
         assertEquals(expectedIncreases, increases);
     }
+
+    @Test
+    void getExpecteValueFromFile(){
+        int size = 0;
+
+        List l = testee.getFile();
+
+        assertTrue(l.size()==size);
+    }
 }
