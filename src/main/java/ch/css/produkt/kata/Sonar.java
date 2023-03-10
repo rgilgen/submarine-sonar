@@ -1,11 +1,10 @@
 package ch.css.produkt.kata;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sonar {
     public int getIncreases(List<Integer> deptData) {
@@ -23,11 +22,13 @@ public class Sonar {
         return increases;
     }
 
-    public List<Integer> getFile() throws FileNotFoundException {
+    public List<Integer> getFile() throws IOException {
         String path = "src/main/resources/kata-input.txt";
         File file = new File(path);
-        InputStream is = new FileInputStream(file);
-        System.out.println(file.isFile());
-        return Collections.emptyList();
+        InputStream is = Files.newInputStream(file.toPath());
+
+        Reader reader = new InputStreamReader(is);
+        BufferedReader r = new BufferedReader(reader);
+        return r.lines().map(Integer::parseInt).collect(Collectors.toList());
     }
 }

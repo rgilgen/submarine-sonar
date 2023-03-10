@@ -3,6 +3,7 @@ package ch.css.produkt.kata;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +50,7 @@ class SonarTest {
     }
 
     @Test
-    void getExpecteValueFromFile() throws FileNotFoundException {
+    void getExpecteValueFromFile() throws IOException {
         int size = 2000;
 
         List l = testee.getFile();
