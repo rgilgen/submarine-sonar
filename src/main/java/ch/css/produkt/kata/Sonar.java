@@ -1,5 +1,7 @@
 package ch.css.produkt.kata;
 
+import java.io.InputStream;
+import java.util.Collections;
 import java.util.List;
 
 public class Sonar {
@@ -16,5 +18,10 @@ public class Sonar {
         }
 
         return increases;
+    }
+
+    public List<Integer> getFile() {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("kata-input.txt");
+        return Collections.emptyList();
     }
 }
