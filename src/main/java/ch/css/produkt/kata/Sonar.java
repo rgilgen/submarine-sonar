@@ -1,5 +1,8 @@
 package ch.css.produkt.kata;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
@@ -20,8 +23,11 @@ public class Sonar {
         return increases;
     }
 
-    public List<Integer> getFile() {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("kata-input.txt");
+    public List<Integer> getFile() throws FileNotFoundException {
+        String path = "src/main/resources/kata-input.txt";
+        File file = new File(path);
+        InputStream is = new FileInputStream(file);
+        System.out.println(file.isFile());
         return Collections.emptyList();
     }
 }
