@@ -72,16 +72,20 @@ class SonarTest {
         assertEquals(expectedIncreases, actualincreases);
     }
 
-    /**
-     * Erste Zahlen:
-     * 104
-     * 111
-     * 124
-     */
     @Test
-    void getSumOfFirstThree() throws IOException{
-        int expectedValue = 339;
-        List<Integer> sonarlist = testee.getFile();
+    void getWindowIncreaseOfThree() throws IOException{
+        int expectedValue = 0;
+        List<Integer> sonarlist = Arrays.asList(104,111,124);
+
+        int actualValue = testee.getWindowIncreases(sonarlist);
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    void getWindowIncreaseOfFourWithIncrease() throws IOException{
+        int expectedValue = 1;
+        List<Integer> sonarlist = Arrays.asList(104,111,124,105);
 
         int actualValue = testee.getWindowIncreases(sonarlist);
 
