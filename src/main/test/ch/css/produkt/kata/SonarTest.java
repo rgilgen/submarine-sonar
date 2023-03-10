@@ -35,4 +35,13 @@ class SonarTest {
 
         assertEquals(expectedIncreases, increases);
     }
+
+    @Test
+    void getDiverseInputs(){
+        int expectedIncreases = 1;
+        List<Integer> deptData = Arrays.asList(101,100,99,200);
+        int increases = Sonar.getIncreases(deptData);
+
+        assertEquals(expectedIncreases, increases);
+    }
 }
