@@ -27,4 +27,12 @@ class SonarTest {
         assertEquals(expectedIncreases, increases);
     }
 
+    @Test
+    void getTwoIncreaseTest(){
+        int expectedIncreases = 2;
+        List<Integer> deptData = Arrays.asList(99,100,101);
+        int increases = Sonar.getIncreases(deptData);
+
+        assertEquals(expectedIncreases, increases);
+    }
 }
