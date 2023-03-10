@@ -4,13 +4,17 @@ import java.util.List;
 
 public class Sonar {
     public static int getIncreases(List<Integer> deptData) {
-        int left = deptData.get(0);
-        int right = deptData.get(1);
 
-        if (right > left) {
-            return 1;
+        int increases = 0;
+
+        for (int i = 1; i < deptData.size(); i++) {
+            int left = deptData.get(i - 1);
+            int right = deptData.get(i);
+            if (right > left) {
+                increases++;
+            }
         }
 
-        return 0;
+        return increases;
     }
 }

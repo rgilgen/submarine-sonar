@@ -19,7 +19,7 @@ class SonarTest {
     }
 
     @Test
-    void getNoIncreaseTest(){
+    void getNoIncreaseTest() {
         int expectedIncreases = 0;
         List<Integer> deptData = Arrays.asList(100, 99);
         int increases = Sonar.getIncreases(deptData);
