@@ -19,9 +19,9 @@ class SonarTest {
     }
 
     @Test
-    void getTwoIncreaseTest(){
-        int expectedIncreases = 2;
-        List<Integer> deptData = Arrays.asList(99, 100, 101);
+    void getNoIncreaseTest(){
+        int expectedIncreases = 0;
+        List<Integer> deptData = Arrays.asList(100, 99);
         int increases = Sonar.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
