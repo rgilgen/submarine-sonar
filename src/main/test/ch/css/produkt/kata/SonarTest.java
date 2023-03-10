@@ -50,10 +50,10 @@ class SonarTest {
 
     @Test
     void getExpecteValueFromFile() throws FileNotFoundException {
-        int size = 0;
+        int size = 2000;
 
         List l = testee.getFile();
 
-        assertTrue(l.size()==size);
+        assertEquals(size,l.size());
     }
 }
