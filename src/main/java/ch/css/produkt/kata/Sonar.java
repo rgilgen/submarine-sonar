@@ -30,4 +30,8 @@ public class Sonar {
         BufferedReader r = new BufferedReader(reader);
         return r.lines().map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public int getWindowIncreases(List<Integer> sonarlist) {
+        return 0;
+    }
 }

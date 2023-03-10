@@ -17,6 +17,7 @@ class SonarTest {
     void getOneIncreaseTest() {
         int expectedIncreases = 1;
         List<Integer> deptData = Arrays.asList(99, 100);
+
         int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
@@ -26,6 +27,7 @@ class SonarTest {
     void getNoIncreaseTest() {
         int expectedIncreases = 0;
         List<Integer> deptData = Arrays.asList(100, 99);
+
         int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
@@ -35,6 +37,7 @@ class SonarTest {
     void getTwoIncreaseTest(){
         int expectedIncreases = 2;
         List<Integer> deptData = Arrays.asList(99,100,101);
+
         int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
@@ -44,6 +47,7 @@ class SonarTest {
     void getDiverseInputs(){
         int expectedIncreases = 1;
         List<Integer> deptData = Arrays.asList(101,100,99,200);
+
         int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
@@ -61,11 +65,26 @@ class SonarTest {
     @Test
     void getAnswerOfQuiz() throws IOException{
         int expectedIncreases= 1527;
-
         List<Integer> sonarlist = testee.getFile();
+
         int actualincreases = testee.getIncreases(sonarlist);
 
         assertEquals(expectedIncreases, actualincreases);
+    }
 
+    /**
+     * Erste Zahlen:
+     * 104
+     * 111
+     * 124
+     */
+    @Test
+    void getSumOfFirstThree() throws IOException{
+        int expectedValue = 339;
+        List<Integer> sonarlist = testee.getFile();
+
+        int actualValue = testee.getWindowIncreases(sonarlist);
+
+        assertEquals(expectedValue, actualValue);
     }
 }
