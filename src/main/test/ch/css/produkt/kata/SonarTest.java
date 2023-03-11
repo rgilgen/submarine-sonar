@@ -2,12 +2,11 @@ package ch.css.produkt.kata;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SonarTest {
 
@@ -34,9 +33,9 @@ class SonarTest {
     }
 
     @Test
-    void getTwoIncreaseTest(){
+    void getTwoIncreaseTest() {
         int expectedIncreases = 2;
-        List<Integer> deptData = Arrays.asList(99,100,101);
+        List<Integer> deptData = Arrays.asList(99, 100, 101);
 
         int increases = testee.getIncreases(deptData);
 
@@ -44,9 +43,9 @@ class SonarTest {
     }
 
     @Test
-    void getDiverseInputs(){
+    void getDiverseInputs() {
         int expectedIncreases = 1;
-        List<Integer> deptData = Arrays.asList(101,100,99,200);
+        List<Integer> deptData = Arrays.asList(101, 100, 99, 200);
 
         int increases = testee.getIncreases(deptData);
 
@@ -57,14 +56,14 @@ class SonarTest {
     void getExpecteValueFromFile() throws IOException {
         int size = 2000;
 
-        List l = testee.getFile();
+        List<Integer> l = testee.getFile();
 
-        assertEquals(size,l.size());
+        assertEquals(size, l.size());
     }
 
     @Test
-    void getAnswerOfQuiz() throws IOException{
-        int expectedIncreases= 1527;
+    void getAnswerOfQuiz() throws IOException {
+        int expectedIncreases = 1527;
         List<Integer> sonarlist = testee.getFile();
 
         int actualincreases = testee.getIncreases(sonarlist);
@@ -73,9 +72,9 @@ class SonarTest {
     }
 
     @Test
-    void getWindowIncreaseOfThree() throws IOException{
+    void getWindowIncreaseOfThree() {
         int expectedValue = 0;
-        List<Integer> sonarlist = Arrays.asList(104,111,124);
+        List<Integer> sonarlist = Arrays.asList(104, 111, 124);
 
         int actualValue = testee.getWindowIncreases(sonarlist);
 
@@ -83,9 +82,29 @@ class SonarTest {
     }
 
     @Test
-    void getWindowIncreaseOfFourWithIncrease() throws IOException{
+    void getWindowIncreaseOfFourWithIncrease() {
         int expectedValue = 1;
-        List<Integer> sonarlist = Arrays.asList(104,111,124,105);
+        List<Integer> sonarlist = Arrays.asList(104, 111, 124, 105);
+
+        int actualValue = testee.getWindowIncreases(sonarlist);
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    void getWindowIncreaseOfFiveWithTwoIncrease() {
+        int expectedValue = 2;
+        List<Integer> sonarlist = Arrays.asList(104, 111, 124, 105, 300);
+
+        int actualValue = testee.getWindowIncreases(sonarlist);
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    void getWindowIncreaseOfFiveWithNoIncrease() {
+        int expectedValue = 0;
+        List<Integer> sonarlist = Arrays.asList(104, 104, 104, 104, 104);
 
         int actualValue = testee.getWindowIncreases(sonarlist);
 

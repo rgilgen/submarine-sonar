@@ -2,7 +2,6 @@ package ch.css.produkt.kata;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +30,17 @@ public class Sonar {
         return r.lines().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    public int getWindowIncreases(List<Integer> sonarlist) {
-        return 0;
+    public int getWindowIncreases(List<Integer> deptData) {
+        int increases = 0;
+
+        for (int i = 3; i < deptData.size(); i++) {
+            int left = deptData.get(i - 1) + deptData.get(i - 2) + deptData.get(i - 3);
+            int right = deptData.get(i) + deptData.get(i - 1) + deptData.get(i - 2);
+            if (right > left) {
+                increases++;
+            }
+        }
+
+        return increases;
     }
 }
