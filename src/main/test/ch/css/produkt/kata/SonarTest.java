@@ -30,20 +30,10 @@ class SonarTest {
         assertEquals(expectedIncreases, increases);
     }
 
-
-    @Test
-    void getExpecteValueFromFile() throws IOException {
-        int size = 2000;
-
-        List<Integer> l = testee.getFile();
-
-        assertEquals(size, l.size());
-    }
-
     @Test
     void getAnswerOfQuiz() throws IOException {
         int expectedIncreases = 1527;
-        List<Integer> sonarlist = testee.getFile();
+        List<Integer> sonarlist = new SignalParser().getFile("src/main/resources/kata-input.txt");
 
         int actualincreases = testee.getIncreases(sonarlist);
 
