@@ -22,13 +22,17 @@ public class Sonar {
         int increases = 0;
 
         for (int i = 3; i < deptData.size(); i++) {
-            int left = deptData.get(i - 1) + deptData.get(i - 2) + deptData.get(i - 3);
-            int right = deptData.get(i) + deptData.get(i - 1) + deptData.get(i - 2);
+            int left = calculateValue(deptData, i - 1);
+            int right = calculateValue(deptData, i);
             if (right > left) {
                 increases++;
             }
         }
 
         return increases;
+    }
+
+    private static int calculateValue(List<Integer> deptData, int i) {
+        return deptData.get(i) + deptData.get(i - 1) + deptData.get(i - 2);
     }
 }
