@@ -4,35 +4,40 @@ import java.util.List;
 
 public class Sonar {
     public int getIncreases(List<Integer> deptData) {
-
         int increases = 0;
+        int accuracy = 1;
 
-        for (int i = 1; i < deptData.size(); i++) {
-            int left = deptData.get(i - 1);
-            int right = deptData.get(i);
-            if (right > left) {
-                increases++;
-            }
-        }
-
-        return increases;
+        return countIncreases(deptData, increases, accuracy);
     }
 
     public int getWindowIncreases(List<Integer> deptData) {
         int increases = 0;
+        int accuracy = 3;
 
-        for (int i = 3; i < deptData.size(); i++) {
-            int left = calculateValue(deptData, i - 1);
-            int right = calculateValue(deptData, i);
+        return countIncreases(deptData, increases, accuracy);
+    }
+
+    private int countIncreases(List<Integer> deptData, int increases, int accuracy) {
+        for (int i = accuracy; i < deptData.size(); i++) {
+            int left = sumUpFromIndex(deptData, i, accuracy);
+            int right = sumUpFromIndex(deptData, i + 1, accuracy);
             if (right > left) {
                 increases++;
             }
         }
-
         return increases;
     }
 
-    private static int calculateValue(List<Integer> deptData, int i) {
-        return deptData.get(i) + deptData.get(i - 1) + deptData.get(i - 2);
+    private static int sumUpFromIndex(List<Integer> deptData, int index, int quantity) {
+        if (index < quantity) {
+            return Integer.MAX_VALUE;
+        }
+        if (deptData.size() >= quantity) {
+            int startIndex = index - quantity;
+            return deptData.subList(startIndex, index).stream()
+                    .mapToInt(Integer::intValue)
+                    .sum();
+        }
+        throw new IllegalArgumentException(String.format("Die verwendeten Parameter können nicht für die Berechnung verwendet werden. deptData.size %d index %d, accurracy %d", deptData.size(), index, quantity));
     }
 }
