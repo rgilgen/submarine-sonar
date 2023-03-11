@@ -1,6 +1,8 @@
 package ch.css.produkt.kata;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,45 +14,22 @@ class SonarTest {
 
     Sonar testee = new Sonar();
 
-    @Test
-    void getOneIncreaseTest() {
-        int expectedIncreases = 1;
-        List<Integer> deptData = Arrays.asList(99, 100);
+
+    @ParameterizedTest(name = "{index} : {0} erwarte {1}")
+    @CsvSource({
+            "'99,100',           1",
+            "'100,99',           0",
+            "'99, 100, 101',     2",
+            "'101, 100, 99, 200',1"
+    })
+    void getIncreasesTest(String list, Integer expectedIncreases) {
+        List<Integer> deptData = parseToIntegerList(list);
 
         int increases = testee.getIncreases(deptData);
 
         assertEquals(expectedIncreases, increases);
     }
 
-    @Test
-    void getNoIncreaseTest() {
-        int expectedIncreases = 0;
-        List<Integer> deptData = Arrays.asList(100, 99);
-
-        int increases = testee.getIncreases(deptData);
-
-        assertEquals(expectedIncreases, increases);
-    }
-
-    @Test
-    void getTwoIncreaseTest() {
-        int expectedIncreases = 2;
-        List<Integer> deptData = Arrays.asList(99, 100, 101);
-
-        int increases = testee.getIncreases(deptData);
-
-        assertEquals(expectedIncreases, increases);
-    }
-
-    @Test
-    void getDiverseInputs() {
-        int expectedIncreases = 1;
-        List<Integer> deptData = Arrays.asList(101, 100, 99, 200);
-
-        int increases = testee.getIncreases(deptData);
-
-        assertEquals(expectedIncreases, increases);
-    }
 
     @Test
     void getExpecteValueFromFile() throws IOException {
@@ -109,5 +88,13 @@ class SonarTest {
         int actualValue = testee.getWindowIncreases(sonarlist);
 
         assertEquals(expectedValue, actualValue);
+    }
+
+    private static List<Integer> parseToIntegerList(String list) {
+        return Arrays.stream(
+                        list.split(",")
+                )
+                .map(s -> Integer.parseInt(s.trim()))
+                .toList();
     }
 }
